@@ -41,7 +41,7 @@ function addCard(title, url, date) {
             <div class="photo-card">
                 <img src="${url}" alt="${title}-image">
                 <div class="card-body">
-                    <p class="date">${date}<p>
+                    <span class="date">${date}<span>
                     <h5>
                         ${title}
                     </h5>
