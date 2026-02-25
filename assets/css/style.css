@@ -37,7 +37,7 @@ h6 {
 }
 
 .app-header>h1 {
-    font-size: 72px;
+    font-size: 4rem;
     font-weight: bolder;
 
     text-transform: uppercase;
@@ -79,13 +79,41 @@ h6 {
     width: 100%;
 }
 
-.app-main .photo-card>h5 {
-    margin-top: 20px;
-}
-
 .app-main .photo-card>.pin {
     position: absolute;
     top: 0;
     left: 50%;
     transform: translate(-50%, -30%);
+}
+
+.app-main .card-body {
+    margin-top: 15px;
+}
+
+.photo-card h5 {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.app-main .photo-card .date {
+    font-family: "Sometype Mono", "monospace";
+}
+
+/* Responsive */
+@media screen and (min-width: 576px) {
+    .photo-card h5 {
+        font-size: 24px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .photo-card h5 {
+        font-size: 28px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .photo-card h5 {
+        font-size: 36px;
+    }
 }

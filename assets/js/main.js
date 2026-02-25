@@ -24,7 +24,7 @@
 const endpoint = "https://lanciweb.github.io/demo/api/pictures/";
 
 /* DOM nodes */
-const galleryContainerEl = document.querySelector(".gallery-container");
+const galleryRowEl = document.querySelector(".gallery-container>.row");
 
 /* Functions */
 
@@ -32,16 +32,22 @@ const galleryContainerEl = document.querySelector(".gallery-container");
  * 
  * @param {string} title 
  * @param {string} url 
+ * @param {string} date 
  * @returns card markup
  */
-function addCard(title, url) {
+function addCard(title, url, date) {
     const markup = `
-        <div class="photo-card">
-            <img src="${url}" alt="" class="${title}-image">
-            <h5>
-                ${title}
-            </h5>
-            <img src="./assets/img/pin.svg" alt="" class="pin">
+        <div class="col">
+            <div class="photo-card">
+                <img src="${url}" alt="${title}-image">
+                <div class="card-body">
+                    <p class="date">${date}<p>
+                    <h5>
+                        ${title}
+                    </h5>
+                </div>
+                <img src="./assets/img/pin.svg" alt="" class="pin">
+            </div>
         </div>
     `;
 
@@ -74,8 +80,9 @@ function handleCards(endpoint, domNodeEl) {
 
                 const title = card.title;
                 const thumbnail = card.url;
+                const date = card.date;
 
-                const markup = addCard(title, thumbnail);
+                const markup = addCard(title, thumbnail, date);
                 cards += markup;
 
             });
@@ -84,4 +91,4 @@ function handleCards(endpoint, domNodeEl) {
         })
 }
 
-handleCards(endpoint, galleryContainerEl)
+handleCards(endpoint, galleryRowEl)
