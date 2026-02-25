@@ -73,8 +73,6 @@ h6 {
 
     position: relative;
 
-    font-family: "Edu Tas Beginner", sans-serif;
-
     background-color: rgb(255, 255, 255);
 }
 
@@ -82,7 +80,7 @@ h6 {
     width: 100%;
 }
 
-.app-main .photo-card>p {
+.app-main .photo-card>h5 {
     margin-top: 20px;
 }
 
