@@ -99,6 +99,49 @@ h6 {
     font-family: "Sometype Mono", "monospace";
 }
 
+/* Overlay */
+.card-overlay {
+    width: 100vw;
+    height: 100vh;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+
+    background-color: rgba(0, 0, 0, 0.404);
+}
+
+.card-overlay>.tools {
+    width: 100%;
+
+    display: flex;
+    justify-content: end;
+
+    padding-right: 5%;
+}
+
+button {
+    background: none;
+
+    border: none;
+
+    padding: 10px;
+
+    font-size: 24px;
+
+    color: white;
+}
+
+button:disabled {
+    cursor: not-allowed;
+
+    color: rgb(199, 199, 199);
+}
+
 /* Responsive */
 @media screen and (min-width: 576px) {
     .photo-card h5 {
