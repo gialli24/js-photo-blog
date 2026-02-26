@@ -75,6 +75,8 @@ h6 {
     background-color: rgb(255, 255, 255);
 
     cursor: pointer;
+
+    transition: .35s;
 }
 
 .app-main .photo-card>.thumbnail {
@@ -99,6 +101,12 @@ h6 {
 
 .app-main .photo-card .date {
     font-family: "Sometype Mono", "monospace";
+}
+
+.photo-card:hover {
+    transform: rotate(-5deg);
+    scale: 1.05;
+    box-shadow: 0 0 50px 2px black;
 }
 
 /* Overlay */
