@@ -36,31 +36,25 @@ const galleryRowEl = document.querySelector(".gallery-container>.row");
  * @returns card markup
  */
 function addCard(title, url, date) {
+    const colEl = document.createElement("div");
+    colEl.className = "col";
+
     const markup = `
-        <div class="col">
-            <div class="photo-card">
-                <img src="${url}" alt="${title}-image">
-                <div class="card-body">
-                    <span class="date">${date}<span>
-                    <h5>
-                        ${title}
-                    </h5>
-                </div>
-                <img src="./assets/img/pin.svg" alt="" class="pin">
+        <div class="photo-card">
+            <img src="${url}" alt="${title}-image">
+            <div class="card-body">
+                <span class="date">${date}<span>
+                <h5>
+                    ${title}
+                </h5>
             </div>
+            <img src="./assets/img/pin.svg" alt="" class="pin">
         </div>
     `;
 
-    return markup;
-}
+    colEl.innerHTML = markup;
 
-/**
- * 
- * @param {string} markup 
- * @param {HTMLElement} domNode 
- */
-function renderCard(markup, domNodeEl) {
-    domNodeEl.innerHTML += markup;
+    return colEl;
 }
 
 /* API Call */
@@ -74,20 +68,16 @@ function handleCards(endpoint, domNodeEl) {
     fetch(endpoint)
         .then(resp => resp.json())
         .then(data => {
-            let cards = "";
-
             data.forEach(card => {
 
                 const title = card.title;
                 const thumbnail = card.url;
                 const date = card.date;
 
-                const markup = addCard(title, thumbnail, date);
-                cards += markup;
+                const colEl = addCard(title, thumbnail, date);
+                domNodeEl.appendChild(colEl);
 
             });
-
-            renderCard(cards, domNodeEl);
         })
 }
 
