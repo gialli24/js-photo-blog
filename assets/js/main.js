@@ -25,6 +25,10 @@ const endpoint = "https://lanciweb.github.io/demo/api/pictures/";
 
 /* DOM nodes */
 const galleryRowEl = document.querySelector(".gallery-container>.row");
+const overlayEl = document.querySelector(".card-overlay");
+const overlayThumbEl = document.getElementById("overlay-thumb");
+const closeOverlayBtn = document.getElementById("close-overlay-btn");
+
 
 /* Functions */
 
@@ -57,14 +61,36 @@ function addCard(title, url, date) {
     return colEl;
 }
 
+/**
+ * 
+ * @param {HTMLElement} element 
+ * @param {string} url 
+ * @param {HTMLElement} overlayEl 
+ * @param {HTMLElement} overlayThumbEl
+ * @param {HTMLElement} closeOverlayBtn 
+ */
+function startOverlayListener(element, overlayEl, overlayThumbEl, closeOverlayBtn) {
+    element.addEventListener("click", () => {
+        overlayEl.classList.remove("d-none");
+
+        document.body.style.overflow = "hidden";
+
+        closeOverlayBtn.addEventListener("click", () => {
+            overlayEl.classList.add("d-none");
+
+            document.body.style.overflow = "auto";
+        })
+    })
+}
+
 /* API Call */
 
 /**
  * 
  * @param {url} endpoint 
- * @param {HTMLElement} domNodeEl 
+ * @param {HTMLElement} galleryRowEl 
  */
-function handleCards(endpoint, domNodeEl) {
+function handleCards(endpoint, galleryRowEl, overlayEl, overlayThumbEl, closeOverlayBtn) {
     fetch(endpoint)
         .then(resp => resp.json())
         .then(data => {
@@ -75,10 +101,12 @@ function handleCards(endpoint, domNodeEl) {
                 const date = card.date;
 
                 const colEl = addCard(title, thumbnail, date);
-                domNodeEl.appendChild(colEl);
+                galleryRowEl.appendChild(colEl);
+
+                startOverlayListener(colEl, overlayEl, overlayThumbEl, closeOverlayBtn)
 
             });
         })
 }
 
-handleCards(endpoint, galleryRowEl)
+handleCards(endpoint, galleryRowEl, overlayEl, overlayThumbEl, closeOverlayBtn)

@@ -124,6 +124,10 @@ h6 {
     padding-right: 5%;
 }
 
+.card-overlay>img {
+    width: 600px;
+}
+
 button {
     background: none;
 
