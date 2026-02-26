@@ -69,9 +69,10 @@ function addCard(title, url, date) {
  * @param {HTMLElement} overlayThumbEl
  * @param {HTMLElement} closeOverlayBtn 
  */
-function startOverlayListener(element, overlayEl, overlayThumbEl, closeOverlayBtn) {
+function startOverlayListener(element, url, overlayEl, overlayThumbEl, closeOverlayBtn) {
     element.addEventListener("click", () => {
         overlayEl.classList.remove("d-none");
+        overlayThumbEl.src = url;
 
         document.body.style.overflow = "hidden";
 
@@ -103,7 +104,7 @@ function handleCards(endpoint, galleryRowEl, overlayEl, overlayThumbEl, closeOve
                 const colEl = addCard(title, thumbnail, date);
                 galleryRowEl.appendChild(colEl);
 
-                startOverlayListener(colEl, overlayEl, overlayThumbEl, closeOverlayBtn)
+                startOverlayListener(colEl, thumbnail, overlayEl, overlayThumbEl, closeOverlayBtn)
 
             });
         })
